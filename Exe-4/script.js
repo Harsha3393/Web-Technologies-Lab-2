@@ -2,7 +2,6 @@ const form = document.getElementById('registrationForm');
 const userTableBody = document.getElementById('userTable').querySelector('tbody');
 const clearAllBtn = document.getElementById('clearAll');
 
-// Load users from localStorage
 function loadUsers() {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     userTableBody.innerHTML = '';
@@ -18,7 +17,6 @@ function loadUsers() {
     });
 }
 
-// Validate form
 function validateForm(name, email, mobile, password) {
     let isValid = true;
 
@@ -47,13 +45,11 @@ function validateForm(name, email, mobile, password) {
     return isValid;
 }
 
-// Check for duplicate email
 function isDuplicateEmail(email) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     return users.some(user => user.email === email);
 }
 
-// Handle form submission
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -77,7 +73,6 @@ form.addEventListener('submit', (e) => {
     form.reset();
 });
 
-// Delete individual user
 userTableBody.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-btn')) {
         const index = e.target.dataset.index;
@@ -88,7 +83,6 @@ userTableBody.addEventListener('click', (e) => {
     }
 });
 
-// Clear all users
 clearAllBtn.addEventListener('click', () => {
     if (confirm('Are you sure you want to delete all users?')) {
         localStorage.removeItem('users');
@@ -98,3 +92,4 @@ clearAllBtn.addEventListener('click', () => {
 
 // Initial load
 loadUsers();
+
