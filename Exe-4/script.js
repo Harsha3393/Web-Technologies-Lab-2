@@ -90,6 +90,6 @@ clearAllBtn.addEventListener('click', () => {
     }
 });
 
-// Initial load
 loadUsers();
+
 
